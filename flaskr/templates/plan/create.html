@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New Plan{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="date">Date</label>
+    <input name="date" id="date" type="date" value="{{ request.form['date'] }}" required><br>
+    <label for="plan_name">Plan Name</label>
+    <input name="plan_name" id="plan_name" type="text" value="{{ request.form['plan_name'] }}" required><br>
+    <textarea name="plan_memo" id="plan_memo">{{ request.form['plan_memo'] }}</textarea><br>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}
