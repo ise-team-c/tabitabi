@@ -29,4 +29,9 @@ def create_app(test_config=None):
     def hello():
         return "Hello, World!"
 
+    from . import plan
+
+    app.register_blueprint(plan.bp)
+    app.add_url_rule("/", endpoint="index")
+
     return app
