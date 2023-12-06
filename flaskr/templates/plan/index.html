@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <h1>{% block title %}My Plan{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('plan.create') }}">New Plan+</a>
+{% endblock %}
