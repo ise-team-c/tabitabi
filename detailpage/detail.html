@@ -41,19 +41,21 @@
      -->
 
     <!-- 表形式のスケジュール -->
-    <table id="schedule">
+    <table id="schedule" class="w100">
         <thead>
             <tr>
-                <th>時間</th>
+                <th>開始時間</th>
+                <th>終了時間</th>
                 <th>予定</th>
                 <th>メモ</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><input type="time" name="Time"></td>
-                <td><input type="text" name="Event" placeholder="イベントを入力"></td>
-                <td><input type="text" name="Detail" placeholder="備考欄"></td>
+                <td><input type="time" name="StartTime"></td>
+                <td><input type="time" name="EndTime"></td>
+                <td><input type="text"  name="Event" placeholder="イベントを入力"></td>
+                <td><input type="text"  name="Detail" placeholder="備考欄"></td>
             </tr>
             <!-- 追加の行はここに挿入 -->
         </tbody>

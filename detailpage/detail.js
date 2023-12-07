@@ -7,12 +7,14 @@ function addRow() {
   var newRow = tbody.insertRow();
 
   // 新しい行にセルを挿入
-  var timeCell = newRow.insertCell(0);
-  var eventCell = newRow.insertCell(1);
-  var memoCell = newRow.insertCell(2);
+  var stimeCell = newRow.insertCell(0);
+  var etimeCell = newRow.insertCell(1);
+  var eventCell = newRow.insertCell(2);
+  var memoCell = newRow.insertCell(3);
 
   // セルにinput要素を追加
-  timeCell.innerHTML = '<input type="time">';
+  stimeCell.innerHTML = '<input type="time">';
+  etimeCell.innerHTML = '<input type="time">';
   eventCell.innerHTML = '<input type="text" placeholder="イベントを入力">';
   memoCell.innerHTML = '<input type="text" placeholder="備考欄">';
 }
