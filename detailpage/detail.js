@@ -36,3 +36,55 @@ function adddDate(){
   
   // ヘッダーを追加
 }
+
+// ------ データ保存 ------
+
+// 1日のスケジュールデータを保存する関数
+function saveSchedule() {
+  // スケジュールデータを収集
+  var scheduleData = [];
+  var table = document.getElementById('schedule');
+  var rows = table.getElementsByTagName('tr');
+
+  for (var i = 1; i < rows.length; i++) {
+    var cells = rows[i].getElementsByTagName('td');
+    console.log(cells);
+
+    var starttime = cells[0].firstElementChild.value;
+    var endtime = cells[1].firstElementChild.value;
+    var title = cells[2].firstElementChild.value;
+    var memo = cells[3].firstElementChild.value;
+
+    // データをオブジェクトにまとめて配列に追加
+    scheduleData.push({
+      starttime: starttime,
+      endtime: endtime,
+      title: title,
+      memo: memo
+    });
+  }
+
+  // ローカルストレージにスケジュールデータを保存
+  localStorage.setItem('scheduleData', JSON.stringify(scheduleData));
+
+  // ユーザーに保存が完了したことを通知（任意）
+  alert('スケジュールデータが保存されました。');
+}
+
+
+// 保存したスケジュールデータをコンソールに表示して確認
+function displaySchedule() {
+  // ローカルストレージからスケジュールデータを取得
+  var storedScheduleData = localStorage.getItem('scheduleData');
+
+  // データが存在するか確認
+  if (storedScheduleData) {
+    // JSON文字列をJavaScriptオブジェクトにパース
+    var scheduleData = JSON.parse(storedScheduleData);
+
+    // コンソールにデータを出力
+    console.log(scheduleData);
+  } else {
+    console.log('保存されたスケジュールデータはありません。');
+  }
+}
