@@ -1,9 +1,84 @@
-{% extends "base.html" %}
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- 外部スタイルシートを読み込み -->
+    <!-- 追加: Font AwesomeのCDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-XXX" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
 
-{% block header %}
-  <h1>{% block title %}My Plan{% endblock %}</h1>
-{% endblock %}
+    <div id="left-panel">
+        <!-- 検索バーなどをここに配置 -->
+        <input type="text" placeholder="検索...">
+        <div class="bookmark-container">
+            <div class="box-around-h2">
+                <h2>あなたのプラン</h2>
+            </div>
+            <p>京都旅行２０２３</p>
+            <p>イタリア</p>
+            <p>北海道（仮）</p>
+        </div>
+        <div class="bookmark-container">
+            <div class="box-around-h2">
+                <h2>旅仲間のプラン</h2>
+            </div>
+            <p>京都グルメ</p>
+            <p>京都へ行こう</p>
+            <p>...</p>
+            <p>...</p>
+            <p>...</p>
+        </div>
+        <div class="bookmark-container">
+            <div class="box-around-h2">
+                <h2>新しいプラン</h2><a href="別のページのURL" class="bookmark-link">別ページへ <i class="fas fa-chevron-right"></i></a> <!-- 追加: ボタンへのリンクとアイコン -->
+            </div>
+            </div>
+        </div>
+    </div>
 
-{% block content %}
-<a href="{{ url_for('plan.create') }}">New Plan+</a>
-{% endblock %}
+    <div id="right-panel">
+        <!-- こちらに右側のコンテンツを配置 -->
+        <center><h2>{{plan_name}}</h2></center>
+
+        <!-- 12月6日のしおり -->
+        {% for date in dates: %}
+        <div class="date-bookmark-container">
+            <div class="box-around-h2">
+                <h2>{{date}}のしおり</h2>
+                <a href="別のページのURL" class="bookmark-link">別ページへ <i class="fas fa-chevron-right"></i></a> <!-- 追加: ボタンへのリンクとアイコン -->
+            </div>
+            <!--以下は参考用にとっておいている-->
+                <div class="bookmark-content">
+                    {% for event in plan_info[date]: %}
+                    <p>{{event["start_time"]}}~{{event["end_time"]}} {{event["event_name"]}}<br>{{event["event_memo"]}} </p>
+                    {% endfor %}
+                </div>
+            <!--ここまで-->
+        </div>
+        {% endfor %}
+
+        <div class="date-bookmark-container">
+            <div class="box-around-h2">
+                <h2>２０２３年１２月７日のしおり</h2>
+                <a href="別のページのURL" class="bookmark-link">別ページへ <i class="fas fa-chevron-right"></i></a> <!-- 追加: ボタンへのリンクとアイコン -->
+            </div>
+            <p>9:00 渡月橋</p>
+        </div>
+
+        <!-- おすすめの観光地一覧 -->
+        <div class="recommendations-container">
+            <div class="box-around-h2">
+                <h2>おすすめの観光地一覧</h2>
+                <a href="別のページのURL" class="bookmark-link">別ページへ <i class="fas fa-chevron-right"></i></a> <!-- 追加: ボタンへのリンクとアイコン -->
+            </div>
+            <p>金閣寺</p>
+            <p>東大寺</p>
+            <p>清水寺</p>
+        </div>
+    </div>
+
+</body>
+</html>

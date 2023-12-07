@@ -10,7 +10,19 @@ bp = Blueprint("plan", __name__)
 
 @bp.route("/")
 def index():
-    return render_template("plan/index.html")
+    plan_name = "beppu"
+    plan_dir_path = DATA_DIR_PATH / "yamasato" / plan_name
+    dates = sorted(p.stem for p in plan_dir_path.glob("*.json"))
+    plan_info = {}
+    for date in dates:
+        json_path = plan_dir_path / f"{date}.json"
+        with json_path.open("r") as f:
+            plan_info_per_day = json.load(f)
+        plan_info[date] = plan_info_per_day["plan"]
+
+    return render_template(
+        "plan/index.html", plan_name=plan_name, dates=dates, plan_info=plan_info
+    )
 
 
 @bp.route("/create", methods=("GET", "POST"))
