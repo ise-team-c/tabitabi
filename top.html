@@ -1,65 +1,12 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-
-        #left-panel {
-            width: 20%; /* 左パネルの幅を設定 */
-            background-color: #f1f1f1; /* 左パネルの背景色を設定 */
-            padding: 20px; /* 左パネルの内側の余白を設定 */
-        }
-
-        #right-panel {
-            flex: 1; /* 右パネルが残りのスペースを占めるように設定 */
-            padding: 20px; /* 右パネルの内側の余白を設定 */
-        }
-
-        input[type="text"] {
-            width: 100%; /* 検索バーが親要素いっぱいに広がるように設定 */
-            padding: 8px;
-            margin: 8px 0;
-            box-sizing: border-box;
-        }
-
-        .bookmark-container {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        .bookmark-container h2 {
-            margin-bottom: 5px;
-        }
-
-        .bookmark-container p {
-            margin: 5px 0;
-        }
-
-        /* 追加 */
-        .date-bookmark-container,
-        .recommendations-container {
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        .date-bookmark-container h2,
-        .recommendations-container h2 {
-            margin-bottom: 5px;
-        }
-
-        .date-bookmark-container p,
-        .recommendations-container p {
-            margin: 5px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="top.css"> <!-- 外部スタイルシートを読み込み -->
+    <!-- 追加: Font AwesomeのCDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-XXX" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -67,13 +14,17 @@
         <!-- 検索バーなどをここに配置 -->
         <input type="text" placeholder="検索...">
         <div class="bookmark-container">
-            <h2>あなたのプラン</h2>
+            <div class="box-around-h2">
+                <h2>あなたのプラン</h2>
+            </div>
             <p>京都旅行２０２３</p>
             <p>イタリア</p>
             <p>北海道（仮）</p>
         </div>
         <div class="bookmark-container">
-            <h2>旅仲間のプラン</h2>
+            <div class="box-around-h2">
+                <h2>旅仲間のプラン</h2>
+            </div>
             <p>京都グルメ</p>
             <p>京都へ行こう</p>
             <p>...</p>
@@ -81,7 +32,10 @@
             <p>...</p>
         </div>
         <div class="bookmark-container">
-            <h2>新しいプラン</h2>
+            <div class="box-around-h2">
+                <h2>新しいプラン</h2><a href="別のページのURL" class="bookmark-link">別ページへ <i class="fas fa-chevron-right"></i></a> <!-- 追加: ボタンへのリンクとアイコン -->
+            </div>
+            </div>
         </div>
     </div>
 
@@ -91,21 +45,31 @@
         
         <!-- 12月6日のしおり -->
         <div class="date-bookmark-container">
-            <h2>２０２３年１２月６日のしおり</h2>
-            <p>9:00</p> <p>伏見稲荷</p>
-            <p>11:00</p> <p>八ツ橋作り</p>
-            <p>14:00</p> <p>祇園</p>
+            <div class="box-around-h2">
+                <h2>２０２３年１２月６日のしおり</h2>
+                <a href="別のページのURL" class="bookmark-link">別ページへ <i class="fas fa-chevron-right"></i></a> <!-- 追加: ボタンへのリンクとアイコン -->
+            </div>
+            <div class="bookmark-content">
+                <p>9:00~10:00 伏見稲荷</p>
+                <p>11:00 八ツ橋作り</p>
+                <p>14:00 祇園</p>
+            </div>
         </div>
 
-        <!-- 12月7日のしおり -->
         <div class="date-bookmark-container">
-            <h2>２０２３年１２月７日のしおり</h2>
-            <p>9:00</p> <p>渡月橋</p>
+            <div class="box-around-h2">
+                <h2>２０２３年１２月７日のしおり</h2>
+                <a href="別のページのURL" class="bookmark-link">別ページへ <i class="fas fa-chevron-right"></i></a> <!-- 追加: ボタンへのリンクとアイコン -->
+            </div>
+            <p>9:00 渡月橋</p>
         </div>
 
         <!-- おすすめの観光地一覧 -->
         <div class="recommendations-container">
-            <h2>おすすめの観光地一覧</h2>
+            <div class="box-around-h2">
+                <h2>おすすめの観光地一覧</h2>
+                <a href="別のページのURL" class="bookmark-link">別ページへ <i class="fas fa-chevron-right"></i></a> <!-- 追加: ボタンへのリンクとアイコン -->
+            </div>
             <p>金閣寺</p>
             <p>東大寺</p>
             <p>清水寺</p>
