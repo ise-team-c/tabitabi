@@ -1,0 +1,63 @@
+/* top.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#left-panel {
+    width: 20%;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+#right-panel {
+    flex: 1;
+    padding: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.bookmark-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.bookmark-container h2 {
+    margin-bottom: 5px;
+}
+
+.bookmark-container p {
+    margin: 5px 0;
+}
+
+.date-bookmark-container,
+.recommendations-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.date-bookmark-container h2,
+.recommendations-container h2 {
+    margin-bottom: 5px;
+}
+
+.date-bookmark-container p,
+.recommendations-container p {
+    margin: 5px 0;
+}
+
+/* 追加 */
+.box-around-h2 {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}

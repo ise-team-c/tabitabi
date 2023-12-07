@@ -33,7 +33,7 @@ function adddDate(){
   // 新たな日程を作成
   var newDate = document.createElement('table');
   newDate.setAttribute('id', 'Date');
-  
+
   // ヘッダーを追加
 }
 
