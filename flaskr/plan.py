@@ -16,16 +16,28 @@ def index():
 @bp.route("/create", methods=("GET", "POST"))
 def create():
     if request.method == "POST":
-        plan_info = {}
-        plan_info["date"] = request.form["date"]
-        plan_info["plan_name"] = request.form["plan_name"]
-        plan_info["plan_memo"] = request.form["plan_memo"]
-
-        # Save a new plan
+        # Read existing plans
         if not DATA_DIR_PATH.exists():
             DATA_DIR_PATH.mkdir()
 
-        json_path = DATA_DIR_PATH / "plan.json"
+        plan_dir_path = DATA_DIR_PATH / "yamasato" / request.form["plan_name"]
+        if not plan_dir_path.exists():
+            plan_dir_path.mkdir(parents=True)
+
+        json_path = plan_dir_path / f"{request.form['date']}.json"
+        if json_path.exists():
+            with json_path.open("r") as f:
+                plan_info = json.load(f)
+        else:
+            plan_info = {"plan": []}
+
+        event_info = {}
+        event_info["start_time"] = request.form["start_time"]
+        event_info["end_time"] = request.form["end_time"]
+        event_info["event_name"] = request.form["event_name"]
+        event_info["event_memo"] = request.form["event_memo"]
+        plan_info["plan"].append(event_info)
+
         with json_path.open("w") as f:
             json.dump(plan_info, f, indent=4)
 

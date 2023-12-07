@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}New Plan{% endblock %}</h1>
+  <h1>{% block title %}新しいプラン{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
   <form method="post">
-    <label for="date">Date</label>
-    <input name="date" id="date" type="date" value="{{ request.form['date'] }}" required><br>
-    <label for="plan_name">Plan Name</label>
+    <label for="plan_name">タイトル</label>
     <input name="plan_name" id="plan_name" type="text" value="{{ request.form['plan_name'] }}" required><br>
-    <textarea name="plan_memo" id="plan_memo">{{ request.form['plan_memo'] }}</textarea><br>
+    <label for="date">日付</label>
+    <input name="date" id="date" type="date" value="{{ request.form['date'] }}" required><br>
+    <label for="start_time">開始時刻</label>
+    <input name="start_time" id="start_time" type="time" value="{{ request.form['start_time'] }}" required><br>
+    <label for="end_time">終了時刻</label>
+    <input name="end_time" id="end_time" type="time" value="{{ request.form['end_time'] }}" required><br>
+    <label for="event_name">タスク</label>
+    <input name="event_name" id="event_name" type="text" value="{{ request.form['event_name'] }}"><br>
+    <textarea name="event_memo" id="event_memo">{{ request.form['event_memo'] }}</textarea><br>
     <input type="submit" value="Save">
   </form>
 {% endblock %}
