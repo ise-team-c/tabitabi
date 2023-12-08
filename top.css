@@ -1,5 +1,3 @@
-/* top.css */
-
 body {
     margin: 0;
     padding: 0;
@@ -55,10 +53,14 @@ input[type="text"] {
     margin: 5px 0;
 }
 
-/* 追加 */
 .box-around-h2 {
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 10px;
 }
 
+.right-align {
+    margin-left: auto;
+    display: block;
+    text-align: right;
+}
