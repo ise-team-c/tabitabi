@@ -28,18 +28,9 @@ function deleteRow() {
   tbody.deleteRow(-1);
 }
 
-// 日程の追加(createPlan)作成中
-function adddDate(){
-  // 新たな日程を作成
-  var newDate = document.createElement('table');
-  newDate.setAttribute('id', 'Date');
-
-  // ヘッダーを追加
-}
-
 // ------ データ保存 ------
 
-// 1日のスケジュールデータを保存する関数
+// 1日のスケジュールデータを保存する関数(バックエンドに送る機能追加中)
 function saveSchedule() {
   // スケジュールデータを収集
   var scheduleData = [];
@@ -50,6 +41,8 @@ function saveSchedule() {
     var cells = rows[i].getElementsByTagName('td');
     console.log(cells);
 
+    var date = document.getElementById('tripdate');
+
     var starttime = cells[0].firstElementChild.value;
     var endtime = cells[1].firstElementChild.value;
     var title = cells[2].firstElementChild.value;
@@ -57,15 +50,49 @@ function saveSchedule() {
 
     // データをオブジェクトにまとめて配列に追加
     scheduleData.push({
-      starttime: starttime,
-      endtime: endtime,
-      title: title,
-      memo: memo
+      start_time: starttime,
+      end_time: endtime,
+      event_name: title,
+      event_memo: memo
     });
   }
 
+  var jsonData = JSON.stringify({
+    date: date.value,
+    plan: scheduleData
+  });
+
+  
+  // バックエンドのURL
+  var backendUrl = '/create';
+
+  // Fetch APIを使ってデータをバックエンドに送信
+  fetch(backendUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    // body: JSON.stringify(jsonData)
+    body: jsonData
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Data sent successfully:', data);
+    // 送信成功時の処理をここに追加
+  })
+  .catch(error => {
+    console.error('Error sending data to backend:', error);
+    // エラー時の処理をここに追加
+  });
+
   // ローカルストレージにスケジュールデータを保存
-  localStorage.setItem('scheduleData', JSON.stringify(scheduleData));
+  // localStorage.setItem('scheduleData', JSON.stringify(scheduleData));
+  localStorage.setItem('scheduleData', jsonData);
 
   // ユーザーに保存が完了したことを通知（任意）
   alert('スケジュールデータが保存されました。');
