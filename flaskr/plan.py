@@ -10,8 +10,13 @@ bp = Blueprint("plan", __name__)
 
 @bp.route("/")
 def index():
-    plan_name = "beppu"
-    plan_dir_path = DATA_DIR_PATH / "yamasato" / plan_name
+    user_dir_path = DATA_DIR_PATH / "yamasato"
+    plans = [p.name for p in user_dir_path.glob("*")]
+    other_user_dir_path = DATA_DIR_PATH / "other_user"
+    plans_of_other_user = [p.name for p in other_user_dir_path.glob("*")]
+
+    plan_name = "京都旅行2023"
+    plan_dir_path = user_dir_path / plan_name
     dates = sorted(p.stem for p in plan_dir_path.glob("*.json"))
     plan_info = {}
     for date in dates:
@@ -21,7 +26,12 @@ def index():
         plan_info[date] = plan_info_per_day["plan"]
 
     return render_template(
-        "plan/index.html", plan_name=plan_name, dates=dates, plan_info=plan_info
+        "plan/index.html",
+        plans=plans,
+        plans_of_other_user=plans_of_other_user,
+        plan_name=plan_name,
+        dates=dates,
+        plan_info=plan_info,
     )
 
 
