@@ -1,4 +1,14 @@
-const allPlans = ["京都グルメ", "京都へ行こう", "大阪ユニバを楽しむ", "大阪グリコ", "大阪たこやき", "イタリアピザ", "イタリアおいしい", "イタリアパスタ", "東京タワー", "浅草", "東京温泉", "フランス美術館巡り", "フランスモンサンミシェル"];
+// let allPlans = ["京都グルメ", "京都へ行こう", "大阪ユニバを楽しむ", "大阪グリコ", "大阪たこやき", "イタリアピザ", "イタリアおいしい", "イタリアパスタ", "東京タワー", "浅草", "東京温泉", "フランス美術館巡り", "フランスモンサンミシェル"];
+console.log(document.getElementById("PlanParent").children)
+const PlanParent = document.getElementById("PlanParent").children
+console.log(PlanParent)
+let PlanChildrens = []
+for (var i = 0; i < PlanParent.length; i++){
+    if (PlanParent[i].localName != "br"){
+        PlanChildrens.push(PlanParent[i].innerHTML)
+    }
+}
+let allPlans = PlanChildrens
 
 function showPlan(plan, panelTitle) {
     // Change only the right panel's title
@@ -36,7 +46,7 @@ function showPlan(plan, panelTitle) {
             const planItem = document.createElement('div');
             planItem.href = "#";
             planItem.className = "bookmark-link";
-            planItem.innerHTML = `${p} <i class='fas fa-chevron-right'></i>`;
+            planItem.innerHTML = `${p} <i class='fas fa-chevron-right'></i><br>`;
             planItem.onclick = function () {
                 showPlan(p, "あなたの旅");
             };
@@ -66,7 +76,7 @@ function addNewPlan(planContainer) {
     const planItem = document.createElement('div');
     planItem.href = "#";
     planItem.className = "bookmark-link";
-    planItem.innerHTML = `${newPlanName} <i class='fas fa-chevron-right'></i>`;
+    planItem.innerHTML = `${newPlanName} <i class='fas fa-chevron-right'></i><br>`;
     planItem.onclick = function () {
         showPlan(newPlanName, "あなたの旅");
     };
@@ -99,12 +109,14 @@ function filterPlansBySearch() {
         const planItem = document.createElement('div');
         planItem.href = "#";
         planItem.className = "bookmark-link";
-        planItem.innerHTML = `${p} <i class='fas fa-chevron-right'></i>`;
+        planItem.innerHTML = `${p} <i class='fas fa-chevron-right'></i><br>`;
         planItem.onclick = function () {
             showPlan(p, "あなたの旅");
         };
 
         plansContainer.appendChild(planItem);
+        plansContainer.appendChild(document.createElement("br"));
+
     });
 }
 
@@ -145,7 +157,7 @@ function showCompanionPlans(...plans) {
             const planItem = document.createElement('div');
             planItem.href = "#";
             planItem.className = "bookmark-link";
-            planItem.innerHTML = `${p} <i class='fas fa-chevron-right'></i>`;
+            planItem.innerHTML = `${p} <i class='fas fa-chevron-right'></i><br>`;
             planItem.onclick = function () {
                 showCompanionPlans(p);
             };
