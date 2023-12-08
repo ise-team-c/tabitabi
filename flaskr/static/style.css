@@ -61,3 +61,9 @@ input[type="text"] {
     padding: 10px;
     margin-bottom: 10px;
 }
+
+.right-align {
+    margin-left: auto;
+    display: block;
+    text-align: right;
+}

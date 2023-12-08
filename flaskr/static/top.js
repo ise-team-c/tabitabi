@@ -11,7 +11,7 @@ function showPlan(plan, panelTitle) {
     }
     // Backendからもらった旅の配列（スタブ）
     const plans = {
-        
+
     }
 
     // Check if the left panel's title is not "あなたの旅" and update it if needed
@@ -122,7 +122,7 @@ function showCompanionPlans(...plans) {
     if (plans.length > 0) {
         const planTitle = document.getElementById('planTitle');
         planTitle.innerText = `旅仲間の旅 - ${plans[0]}`;
-        
+
         // Update the left panel's plans dynamically
         const leftPanelTitle = document.querySelector('#left-panel .box-around-h2 h2');
         leftPanelTitle.innerText = "旅仲間の旅";
@@ -153,4 +153,3 @@ function showCompanionPlans(...plans) {
         });
     }
 }
-
