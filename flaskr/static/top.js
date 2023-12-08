@@ -59,6 +59,7 @@ function showPlan(plan, panelTitle) {
 let newPlanCounter = 1;
 
 function addNewPlan(planContainer) {
+    window.location.href = "/create";
     const newPlanName = `新たな旅${newPlanCounter}`;
     newPlanCounter++;
 
