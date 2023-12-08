@@ -73,11 +73,12 @@ function showPlan(plan, panelTitle) {
 let newPlanCounter = 1;
 
 function addNewPlan(planContainer) {
+    window.location.href="/create"
     const newPlanName = `新たな旅${newPlanCounter}`;
     newPlanCounter++;
 
     const planItem = document.createElement('div');
-    planItem.href = "#";
+    planItem.href = "/create";
     planItem.className = "bookmark-link";
     planItem.innerHTML = `${newPlanName} <i class='fas fa-chevron-right'></i>`;
     planItem.onclick = function () {
