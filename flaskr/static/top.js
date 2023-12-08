@@ -1,4 +1,17 @@
-const allPlans = ["京都グルメ", "京都へ行こう", "大阪ユニバを楽しむ", "大阪グリコ", "大阪たこやき", "イタリアピザ", "イタリアおいしい", "イタリアパスタ", "東京タワー", "浅草", "東京温泉", "フランス美術館巡り", "フランスモンサンミシェル"];
+const allPlans = ["京都グルメ", "京都へ行こう", "大阪ユニバを楽しむ", "大阪グリコ", "大阪たこやき", "イタリアピザ", "イタリアおいしい", "イタリアパスタ", "東京タワー", "浅草", "東京温泉", "フランス美術館巡り", "フランスモンサンミシェル", "IBM"];
+
+// 旅仲間の旅のプランを表示するための要素
+const travelCompanionPlansContainer = document.getElementById('travelCompanionPlans2');
+
+// 旅仲間の旅のプランをHTMLに追加
+allPlans.forEach(p => {
+    const planItem = document.createElement('div');
+    planItem.className = "bookmark-link";
+    planItem.innerText = p;
+    planItem.href = "#";
+    travelCompanionPlansContainer.appendChild(planItem);
+});
+
 
 function showPlan(plan, panelTitle) {
     // Change only the right panel's title
@@ -9,6 +22,7 @@ function showPlan(plan, panelTitle) {
     } else if (panelTitle === "旅仲間の旅") {
         rightPanelTitle.innerText = `${panelTitle} - ${plan}`;
     }
+    
     // Backendからもらった旅の配列（スタブ）
     const plans = {
 
@@ -76,7 +90,7 @@ function addNewPlan(planContainer) {
 function filterPlansBySearch() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
     console.log("a")
-    const plansContainer = document.getElementById('plansContainer');
+    const plansContainer = document.getElementById('travelCompanionPlans2');
 
     // Clear existing plan items
     while (plansContainer.firstChild) {

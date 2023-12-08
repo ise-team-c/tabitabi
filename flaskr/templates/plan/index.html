@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- 外部スタイルシートを読み込み -->
     <!-- 追加: Font AwesomeのCDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-XXX" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="{{ url_for('static', filename='top.js') }}"></script>
 </head>
 <body>
 
@@ -33,8 +32,12 @@
             <div class="box-around-h2">
                 <h2>旅仲間の旅</h2>
             </div>
+            <div id="travelCompanionPlans2">
+                
+            </div>
             <!-- Updated onclick functions to pass the plans dynamically -->
-            <a href="#" class="bookmark-link" onclick="showCompanionPlans('京都グルメ', '京都へ行こう')">
+
+            <!-- <a href="#" class="bookmark-link" onclick="showCompanionPlans('京都グルメ', '京都へ行こう')">
                 京都グルメ <i class="fas fa-chevron-right"></i>
             </a></br>
             <a href="#" class="bookmark-link" onclick="showCompanionPlans('大阪ユニバを楽しむ', '大阪グリコ', '大阪たこやき')">
@@ -48,7 +51,7 @@
             </a></br>
             <a href="#" class="bookmark-link" onclick="showCompanionPlans('フランス美術館巡り', 'フランスモンサンミシェル')">
                 フランス <i class="fas fa-chevron-right"></i>
-            </a></br>
+            </a></br> -->
 
         </div>
         <input type="text" placeholder="検索..." oninput="filterTravelCompanionPlans()" id="searchInput">
@@ -135,6 +138,8 @@
         //     return filteredPlans;
         // }
     </script>
+    
+    <script src="{{ url_for('static', filename='top.js') }}"></script>
 
 </body>
 </html>
