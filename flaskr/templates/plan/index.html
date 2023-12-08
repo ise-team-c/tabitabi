@@ -16,15 +16,11 @@
             <div class="box-around-h2">
                 <h2>あなたの旅</h2>
             </div>
-            <a href="#" class="bookmark-link" onclick="showPlan('京都旅行２０２３', 'あなたの旅')">
-                京都旅行２０２３ <i class="fas fa-chevron-right"></i>
-            </a></br>
-            <a href="#" class="bookmark-link" onclick="showPlan('イタリア', 'あなたの旅')">
-                イタリア <i class="fas fa-chevron-right"></i>
-            </a></br>
-            <a href="#" class="bookmark-link" onclick="showPlan('北海道（仮）', 'あなたの旅')">
-                北海道（仮） <i class="fas fa-chevron-right"></i>
-            </a></br>
+            {% for plan in plans: %}
+                <a href="#" class="bookmark-link" onclick="showPlan(plan, 'あなたの旅')">
+                    {{ plan }} <i class="fas fa-chevron-right"></i>
+                </a></br>
+            {% endfor %}
             <button class="bookmark-button" onclick="addNewPlan()">
                 新たな旅 <i class="fas fa-chevron-right"></i>
             </button>
@@ -34,7 +30,12 @@
                 <h2>旅仲間の旅</h2>
             </div>
             <!-- Updated onclick functions to pass the plans dynamically -->
-            <a href="#" class="bookmark-link" onclick="showCompanionPlans('京都グルメ', '京都へ行こう')">
+            {% for plan_of_other_user in plans_of_other_user: %}
+            <a href="#" class="bookmark-link" onclick="showCompanionPlans(plan_of_other_user, '京都へ行こう')">
+                {{ plan_of_other_user }} <i class="fas fa-chevron-right"></i>
+            </a></br>
+            {% endfor %}
+            <!-- <a href="#" class="bookmark-link" onclick="showCompanionPlans('京都グルメ', '京都へ行こう')">
                 京都グルメ <i class="fas fa-chevron-right"></i>
             </a></br>
             <a href="#" class="bookmark-link" onclick="showCompanionPlans('大阪ユニバを楽しむ', '大阪グリコ', '大阪たこやき')">
@@ -48,34 +49,28 @@
             </a></br>
             <a href="#" class="bookmark-link" onclick="showCompanionPlans('フランス美術館巡り', 'フランスモンサンミシェル')">
                 フランス <i class="fas fa-chevron-right"></i>
-            </a></br>
+            </a></br> -->
 
         </div>
         <input type="text" placeholder="検索..." oninput="filterTravelCompanionPlans()" id="searchInput">
     </div>
 
     <div id="right-panel">
-        <center><h2 id="planTitle">今回の旅</h2></center>
+        <center><h2 id="planTitle">京都旅行2023</h2></center>
 
+        {% for date in dates: %}
         <div class="date-bookmark-container kyoto-travel-container" data-day="6">
             <div class="box-around-h2">
-                <h2>２０２３年１２月６日のしおり</h2>
+                <h2>{{date}}のしおり</h2>
                 <a href="別のページのURL" class="bookmark-link right-align">    詳細ページへ <i class="fas fa-caret-square-left"></i></a>
             </div>
             <div class="bookmark-content">
-                <p>9:00~10:00 伏見稲荷</p>
-                <p>11:00~12:00 八ツ橋作り</p>
-                <p>14:00~15:30 祇園</p>
+            {% for event in plan_info[date]: %}
+                <p>{{event["start_time"]}}-{{event["end_time"]}} {{event["event_name"]}}</p>
+            {% endfor %}
             </div>
         </div>
-
-        <div class="date-bookmark-container" data-day="7">
-            <div class="box-around-h2">
-                <h2>２０２３年１２月７日のしおり</h2>
-                <a href="別のページのURL" class="bookmark-link right-align">詳細ページへ <i class="fas fa-chevron-right"></i></a>
-            </div>
-            <p>9:00 渡月橋</p>
-        </div>
+        {% endfor %}
 
         <div class="recommendations-container">
             <div class="box-around-h2">
