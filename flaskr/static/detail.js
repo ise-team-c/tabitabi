@@ -41,6 +41,7 @@ function saveSchedule() {
     var cells = rows[i].getElementsByTagName('td');
     console.log(cells);
 
+    var planname = document.getElementById('triptitle');
     var date = document.getElementById('tripdate');
 
     var starttime = cells[0].firstElementChild.value;
@@ -58,6 +59,7 @@ function saveSchedule() {
   }
 
   var jsonData = JSON.stringify({
+    plan_name:planname.value,
     date: date.value,
     plan: scheduleData
   });
