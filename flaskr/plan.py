@@ -53,8 +53,8 @@ def create():
         else:
             plan_info = {"plan": []}
 
-        for event_info in request.json["plan"]:
-            plan_info["plan"].append(event_info)
+        plan_info["plan"].extend(request.json["plan"])
+        plan_info["plan"].sort(key=lambda x: x["start_time"])
 
         with json_path.open("w") as f:
             json.dump(plan_info, f, indent=4)
